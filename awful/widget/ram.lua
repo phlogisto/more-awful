@@ -10,6 +10,7 @@ module("awful.widget.ram")
 
 
 local function update()
+  --TODO: check if popen works
   local fd = io.popen("free");
   local free = {}
   for line in fd:lines() do

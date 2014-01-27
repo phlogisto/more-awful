@@ -10,13 +10,17 @@ module("awful.widget.uptime")
 
 
 local function update()
+  local uptime = "!?"
   local times = {}
-  local fd = io.input("/proc/uptime")
-  for value in string.gmatch(fd:read("*all"), "%S+") do
-    table.insert(times, value)
-  end 
-  io.close(fd)
-  local uptime = math.floor(times[1]/36)/100
+
+  local fd = io.open("/proc/uptime", "r")
+  if fd~=nil then
+    for value in string.gmatch(fd:read("*all"), "%S+") do
+      table.insert(times, value)
+    end 
+    io.close(fd)
+    uptime = math.floor(times[1]/36)/100
+  end
 
   return uptime
 end

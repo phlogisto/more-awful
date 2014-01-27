@@ -7,6 +7,7 @@ module("awful.widget.kernel")
 
 
 local function update()
+  --TODO: check if popen works
   local fd = io.popen("echo -n `uname -r`")
   local kernel = fd:read("*all")
   io.close(fd)

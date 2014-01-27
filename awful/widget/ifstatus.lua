@@ -25,12 +25,14 @@ local function update(interface, interval)
   if ifstatus_up    == nil then ifstatus_up   =0 end
   if ifstatus_down  == nil then ifstatus_down =0 end
 
-  local fd = io.input("/proc/net/dev");
+  local fd = io.open("/proc/net/dev", "r");
   local net_dev = {}
-  for line in fd:lines() do
-    table.insert(net_dev, line);
+  if fd~=nil then
+    for line in fd:lines() do
+      table.insert(net_dev, line);
+    end
+    io.close(fd)
   end
-  io.close(fd)
   
   local if_up         = 0
   local if_down       = 0
