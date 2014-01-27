@@ -7,6 +7,7 @@ module("awful.widget.hostname")
 
 
 local function update()
+  --TODO: check if popen works
   local fd = io.popen("echo -n `hostname`")
   local hostname = fd:read("*all")
   io.close(fd)

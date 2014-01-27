@@ -12,11 +12,11 @@ local function update(bat_num)
   local bat_state       = "E"
   local bat_energy_now  = 0
   local bat_energy_full = 0
-  local charge_symbol = { C = "<span weight='bold' color='#0ff'>⚡</span>",
-                          D = "<span weight='bold' color='#ff0'>⌁</span>",
+  local charge_symbol = { C = "⚡",
+                          D = "", --⌁
                           F = "⚡",
-                          U = "<span weight='bold' color='#f00'>?</span>",
-                          E = "<span weight='bold' color='#f00'>!</span>"   }
+                          U = "?",
+                          E = "!"   }
 
   local fd = io.open("/sys/class/power_supply/BAT"..bat_num.."/status", "r")
   if fd~=nil then

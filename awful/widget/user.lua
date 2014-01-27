@@ -7,6 +7,7 @@ module("awful.widget.user")
 
 
 local function update()
+  --TODO: check if popen works
   local fd = io.popen("echo -n `whoami`")
   local whoami = fd:read("*all")
   io.close(fd)

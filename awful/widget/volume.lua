@@ -9,6 +9,7 @@ module("awful.widget.volume")
 
 
 local function update()
+  --TODO: check if popen works
   local fd = io.popen("amixer sget Master")
   local status = fd:read("*all")
   io.close(fd)

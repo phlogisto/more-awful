@@ -10,6 +10,8 @@ module("awful.widget.swap")
 
 
 local function update()
+  --TODO: merge with ram.lua?
+  --TODO: check if popen works
   local fd = io.popen("free");
   local free = {}
   for line in fd:lines() do

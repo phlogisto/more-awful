@@ -13,12 +13,14 @@ local function update()
   if conky_cpu_idle   == nil then conky_cpu_idle  = {} end
   if conky_cpu_total  == nil then conky_cpu_total = {} end
 
-  local fd = io.input("/proc/stat");
+  local fd = io.open("/proc/stat", "r");
   local proc_stat = {}
-  for line in fd:lines() do
-    table.insert(proc_stat, line);
+  if fd~=nil then
+    for line in fd:lines() do
+      table.insert(proc_stat, line);
+    end
+    io.close(fd)
   end
-  io.close(fd)
 
   local cpu_idle  = {}
   local cpu_total = {}
