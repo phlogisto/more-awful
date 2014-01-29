@@ -33,6 +33,14 @@ local function update()
     end
   end
 
+  if percentage < 33 then
+    return percentage.."%"
+  elseif percentage < 66 then
+    return "<span color='#ff0'>"..percentage.."%</span>"
+  else
+    return "<span color='#f00'>"..percentage.."%</span>"
+  end 
+
   return percentage.."%"
 end
 
