@@ -23,7 +23,7 @@ require("awful.widget.ram")
 require("awful.widget.swap")
 require("awful.widget.ifstatus")
 require("awful.widget.volume")
-require("awful.widget.weather")
+require("awful.widget.external")
 require("awful.widget.layout")
 
 --- Widget module for awful
